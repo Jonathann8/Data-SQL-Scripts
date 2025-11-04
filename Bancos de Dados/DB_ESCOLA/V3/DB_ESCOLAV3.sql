@@ -1,0 +1,233 @@
+-- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
+--
+-- Host: localhost    Database: db_escola
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.4.32-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `alunos`
+--
+
+DROP TABLE IF EXISTS `alunos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `alunos` (
+  `id_aluno` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `nascimento` date DEFAULT NULL,
+  `sexo` enum('M','F') DEFAULT NULL,
+  `turma` varchar(10) DEFAULT NULL,
+  `nacionalidade` varchar(30) DEFAULT 'Brasil',
+  `id_turma` int(11) DEFAULT NULL,
+  `data_cadastro` date DEFAULT NULL,
+  `id_responsavel` int(11) DEFAULT NULL,
+  `nome_do_responsavel` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_aluno`),
+  KEY `id_turma` (`id_turma`),
+  KEY `fk_aluno_responsavel` (`id_responsavel`),
+  CONSTRAINT `fk_aluno_responsavel` FOREIGN KEY (`id_responsavel`) REFERENCES `responsaveis` (`id_responsavel`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alunos`
+--
+
+LOCK TABLES `alunos` WRITE;
+/*!40000 ALTER TABLE `alunos` DISABLE KEYS */;
+INSERT INTO `alunos` VALUES (1,'João da Costa','2010-02-15','M',NULL,'Brasil',3,'2025-10-17',NULL,'Maria Silva'),(2,'Pedro Henrique','2010-05-20','M',NULL,'Brasil',3,'2025-10-17',NULL,'Paulo Santos'),(3,'Lucas Ferreira','2010-09-08','M',NULL,'Brasil',3,'2025-10-17',NULL,'Carla Oliveira'),(4,'Gustavo Lopes','2010-01-22','M',NULL,'Brasil',3,'2025-10-17',NULL,'Roberto Souza'),(5,'Felipe Mendes','2010-11-03','M',NULL,'Brasil',3,'2025-10-17',NULL,'Juliana Mendes'),(6,'Daniel Alves','2010-04-18','M',NULL,'Brasil',3,'2025-10-17',NULL,'Fernando Alves'),(7,'Ricardo Vieira','2010-07-29','M',NULL,'Brasil',3,'2025-10-17',NULL,'Lúcia Vieira'),(8,'Ana Luiza Lima','2010-03-01','F',NULL,'Brasil',3,'2025-10-17',NULL,'André Lima'),(9,'Julia Costa','2010-06-14','F',NULL,'Brasil',3,'2025-10-17',NULL,'Tatiane Costa'),(10,'Mariana Rocha','2010-08-19','F',NULL,'Brasil',3,'2025-10-17',NULL,'Sérgio Rocha'),(11,'Camila Borges','2010-10-25','F',NULL,'Brasil',3,'2025-10-17',NULL,'Marta Borges'),(12,'Isabella Reis','2010-12-07','F',NULL,'Brasil',3,'2025-10-17',NULL,'Marcelo Reis'),(13,'Giovanna Prado','2010-04-05','F',NULL,'Brasil',3,'2025-10-17',NULL,'Cristina Prado'),(14,'Luiza Barbosa','2010-09-12','F',NULL,'Brasil',3,'2025-10-17',NULL,'Alexandre Barbosa'),(15,'Rafael Sousa','2009-02-04','M',NULL,'Brasil',4,'2025-10-17',NULL,'Isabela Sousa'),(16,'Gabriel Neves','2009-05-16','M',NULL,'Brasil',4,'2025-10-17',NULL,'Isabela Sousa'),(17,'Bruno Aguiar','2009-09-03','M',NULL,'Brasil',4,'2025-10-17',NULL,'Ricardo Neves'),(18,'Enzo Teixeira','2009-01-20','M',NULL,'Brasil',4,'2025-10-17',NULL,'Patrícia Aguiar'),(19,'Arthur Gomes','2009-11-11','M',NULL,'Brasil',4,'2025-10-17',NULL,'Patrícia Aguiar'),(20,'Vitor Pires','2009-07-27','M',NULL,'Brasil',4,'2025-10-17',NULL,'Gustavo Teixeira'),(21,'Larissa Dias','2009-03-09','F',NULL,'Brasil',4,'2025-10-17',NULL,'Renata Gomes'),(22,'Manuela Lima','2009-06-19','F',NULL,'Brasil',4,'2025-10-17',NULL,'Renata Gomes'),(23,'Beatriz Mendes','2009-08-24','F',NULL,'Brasil',4,'2025-10-17',NULL,'Fábio Pires'),(24,'Letícia Nogueira','2009-10-31','F',NULL,'Brasil',4,'2025-10-17',NULL,'Heloísa Dias'),(25,'Nicole Santos','2009-12-19','F',NULL,'Brasil',4,'2025-10-17',NULL,'Heloísa Dias'),(26,'Amanda Bastos','2009-04-08','F',NULL,'Brasil',4,'2025-10-17',NULL,'César Mendes'),(27,'Sofia Queiroz','2009-09-17','F',NULL,'Brasil',4,'2025-10-17',NULL,'Viviane Nogueira'),(28,'Marcelo Cruz','2008-02-01','M',NULL,'Brasil',5,'2025-10-17',NULL,'Viviane Nogueira'),(29,'Eduardo Castro','2008-05-13','M',NULL,'Brasil',5,'2025-10-17',NULL,'Ronaldo Santos'),(30,'Thiago Pereira','2008-09-06','M',NULL,'Brasil',5,'2025-10-17',NULL,'Ronaldo Santos'),(31,'Hugo Rocha','2008-01-25','M',NULL,'Brasil',5,'2025-10-17',NULL,'Sofia Queiroz'),(32,'Diego Campos','2008-11-19','M',NULL,'Brasil',5,'2025-10-17',NULL,'Maria Silva'),(33,'Alex Silva','2008-04-21','M',NULL,'Brasil',5,'2025-10-17',NULL,'Carla Oliveira'),(34,'Cauã Almeida','2008-07-02','M',NULL,'Brasil',5,'2025-10-17',NULL,'Juliana Mendes'),(35,'Carolina Vaz','2008-03-05','F',NULL,'Brasil',5,'2025-10-17',NULL,'Lúcia Vieira'),(36,'Juliana Melo','2008-06-10','F',NULL,'Brasil',5,'2025-10-17',NULL,'Tatiane Costa'),(37,'Lívia Ribeiro','2008-08-29','F',NULL,'Brasil',5,'2025-10-17',NULL,'Marta Borges'),(38,'Clara Mendes','2008-10-14','F',NULL,'Brasil',5,'2025-10-17',NULL,'Cristina Prado'),(39,'Helena Soares','2008-12-23','F',NULL,'Brasil',5,'2025-10-17',NULL,'Isabela Sousa'),(40,'Alice Pires','2008-04-01','F',NULL,'Brasil',5,'2025-10-17',NULL,'Patrícia Aguiar');
+/*!40000 ALTER TABLE `alunos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `disciplinas`
+--
+
+DROP TABLE IF EXISTS `disciplinas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `disciplinas` (
+  `id_disciplina` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_disciplina` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_disciplina`),
+  UNIQUE KEY `nome_disciplina` (`nome_disciplina`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `disciplinas`
+--
+
+LOCK TABLES `disciplinas` WRITE;
+/*!40000 ALTER TABLE `disciplinas` DISABLE KEYS */;
+INSERT INTO `disciplinas` VALUES (9,'Artes'),(5,'Biologia'),(10,'Educação Física'),(11,'Filosofia'),(3,'Física'),(7,'Geografia'),(6,'História'),(8,'Inglês'),(1,'Língua Portuguesa'),(2,'Matemática'),(4,'Química'),(12,'Sociologia');
+/*!40000 ALTER TABLE `disciplinas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `grade_aulas`
+--
+
+DROP TABLE IF EXISTS `grade_aulas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `grade_aulas` (
+  `id_grade` int(11) NOT NULL AUTO_INCREMENT,
+  `id_turma` int(11) NOT NULL,
+  `id_disciplina` int(11) NOT NULL,
+  `id_professor` int(11) NOT NULL,
+  `ano_letivo` year(4) NOT NULL,
+  `carga_horaria` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_grade`),
+  UNIQUE KEY `id_turma` (`id_turma`,`id_disciplina`,`ano_letivo`),
+  KEY `id_disciplina` (`id_disciplina`),
+  KEY `id_professor` (`id_professor`),
+  CONSTRAINT `grade_aulas_ibfk_1` FOREIGN KEY (`id_turma`) REFERENCES `turmas` (`id_turma`),
+  CONSTRAINT `grade_aulas_ibfk_2` FOREIGN KEY (`id_disciplina`) REFERENCES `disciplinas` (`id_disciplina`),
+  CONSTRAINT `grade_aulas_ibfk_3` FOREIGN KEY (`id_professor`) REFERENCES `professores` (`id_professor`),
+  CONSTRAINT `grade_aulas_ibfk_4` FOREIGN KEY (`id_professor`) REFERENCES `professores` (`id_professor`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grade_aulas`
+--
+
+LOCK TABLES `grade_aulas` WRITE;
+/*!40000 ALTER TABLE `grade_aulas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grade_aulas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `notas`
+--
+
+DROP TABLE IF EXISTS `notas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `notas` (
+  `id_registro` int(11) NOT NULL AUTO_INCREMENT,
+  `id_aluno` int(11) NOT NULL,
+  `id_grade` int(11) NOT NULL,
+  `nota` decimal(4,2) NOT NULL,
+  `tipo_avaliacao` varchar(30) NOT NULL,
+  `data_avaliacao` date NOT NULL,
+  PRIMARY KEY (`id_registro`),
+  UNIQUE KEY `id_aluno` (`id_aluno`,`id_grade`,`tipo_avaliacao`,`data_avaliacao`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notas`
+--
+
+LOCK TABLES `notas` WRITE;
+/*!40000 ALTER TABLE `notas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `notas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `professores`
+--
+
+DROP TABLE IF EXISTS `professores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `professores` (
+  `id_professor` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `nascimento` date DEFAULT NULL,
+  `sexo` enum('M','F') DEFAULT NULL,
+  `contratacao` date NOT NULL,
+  `salario` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_professor`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `professores`
+--
+
+LOCK TABLES `professores` WRITE;
+/*!40000 ALTER TABLE `professores` DISABLE KEYS */;
+INSERT INTO `professores` VALUES (1,'Profa. Língua Portuguesa - Helena','1982-03-10','F','2015-02-01',6800.00),(2,'Prof. Matemática - Otávio','1978-11-20','M','2010-08-15',7000.00),(3,'Prof. Física - Elias','1990-07-05','M','2022-03-01',5500.00),(4,'Profa. Química - Lígia','1988-04-12','F','2018-07-10',6200.00),(5,'Profa. Biologia - Fernanda','1985-09-25','F','2019-01-20',6000.00),(6,'Prof. História - César','1975-01-01','M','2011-05-05',7200.00),(7,'Profa. Geografia - Marta','1980-10-30','F','2014-06-18',6500.00),(8,'Prof. Inglês - Thomas','1992-06-18','M','2023-01-01',4800.00),(9,'Profa. Artes - Rebeca','1995-12-03','F','2024-03-15',4500.00),(10,'Prof. Educação Física - Rodrigo','1984-02-29','M','2016-09-01',5800.00),(11,'Prof. Filosofia - Igor','1987-08-08','M','2021-11-20',5000.00),(12,'Profa. Sociologia - Patrícia','1979-04-22','F','2013-04-10',6400.00);
+/*!40000 ALTER TABLE `professores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `responsaveis`
+--
+
+DROP TABLE IF EXISTS `responsaveis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `responsaveis` (
+  `id_responsavel` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `parentesco` enum('Pai','Mãe','Tutor','Outro') DEFAULT NULL,
+  PRIMARY KEY (`id_responsavel`),
+  UNIQUE KEY `cpf` (`cpf`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `responsaveis`
+--
+
+LOCK TABLES `responsaveis` WRITE;
+/*!40000 ALTER TABLE `responsaveis` DISABLE KEYS */;
+INSERT INTO `responsaveis` VALUES (1,'Maria Silva','111.111.111-11',NULL,NULL,'Mãe'),(2,'Paulo Santos','222.222.222-22',NULL,NULL,'Pai'),(3,'Carla Oliveira','333.333.333-33',NULL,NULL,'Mãe'),(4,'Roberto Souza','444.444.444-44',NULL,NULL,'Pai'),(5,'Juliana Mendes','555.555.555-55',NULL,NULL,'Mãe'),(6,'Fernando Alves','666.666.666-66',NULL,NULL,'Pai'),(7,'Lúcia Vieira','777.777.777-77',NULL,NULL,'Mãe'),(8,'André Lima','888.888.888-88',NULL,NULL,'Pai'),(9,'Tatiane Costa','999.999.999-99',NULL,NULL,'Mãe'),(10,'Sérgio Rocha','101.101.101-00',NULL,NULL,'Pai'),(11,'Marta Borges','112.112.112-11',NULL,NULL,'Mãe'),(12,'Marcelo Reis','123.123.123-22',NULL,NULL,'Pai'),(13,'Cristina Prado','134.134.134-33',NULL,NULL,'Mãe'),(14,'Alexandre Barbosa','145.145.145-44',NULL,NULL,'Pai'),(15,'Isabela Sousa','156.156.156-55',NULL,NULL,'Mãe'),(16,'Ricardo Neves','167.167.167-66',NULL,NULL,'Pai'),(17,'Patrícia Aguiar','178.178.178-77',NULL,NULL,'Mãe'),(18,'Gustavo Teixeira','189.189.189-88',NULL,NULL,'Pai'),(19,'Renata Gomes','190.190.190-99',NULL,NULL,'Mãe'),(20,'Fábio Pires','201.201.201-00',NULL,NULL,'Pai'),(21,'Heloísa Dias','212.212.212-11',NULL,NULL,'Mãe'),(22,'César Mendes','223.223.223-22',NULL,NULL,'Pai'),(23,'Viviane Nogueira','234.234.234-33',NULL,NULL,'Mãe'),(24,'Ronaldo Santos','245.245.245-44',NULL,NULL,'Pai'),(25,'Sofia Queiroz','256.256.256-55',NULL,NULL,'Mãe');
+/*!40000 ALTER TABLE `responsaveis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `turmas`
+--
+
+DROP TABLE IF EXISTS `turmas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `turmas` (
+  `id_turma` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_turma` varchar(10) NOT NULL,
+  `ano` int(11) DEFAULT NULL,
+  `ano_letivo` year(4) DEFAULT NULL,
+  PRIMARY KEY (`id_turma`),
+  UNIQUE KEY `nome_turma` (`nome_turma`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `turmas`
+--
+
+LOCK TABLES `turmas` WRITE;
+/*!40000 ALTER TABLE `turmas` DISABLE KEYS */;
+INSERT INTO `turmas` VALUES (1,'1A_EM_2025',NULL,2025),(2,'2A_EM_2025',NULL,2025),(3,'3A_EM_2025',NULL,2025);
+/*!40000 ALTER TABLE `turmas` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-11-04 17:22:36
