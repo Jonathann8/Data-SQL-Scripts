@@ -1,0 +1,38 @@
+-- 1. CRIAÇÃO DO BANCO DE DADOS (OPCIONAL, SE AINDA NÃO EXISTIR)
+CREATE DATABASE IF NOT EXISTS hospital_db;
+USE hospital_db;
+
+-- 2. TABELA: PACIENTE
+CREATE TABLE Paciente (
+    id_paciente INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    data_nascimento DATE NOT NULL,
+    endereco VARCHAR(255),
+    telefone VARCHAR(15)
+);
+
+-- 3. TABELA: MÉDICO
+CREATE TABLE Medico (
+    id_medico INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    crm VARCHAR(15) UNIQUE NOT NULL, -- CRM como identificador único
+    especialidade VARCHAR(50) NOT NULL
+);
+
+-- 4. TABELA: CONSULTA (CONTÉM AS CHAVES ESTRANGEIRAS)
+CREATE TABLE Consulta (
+    id_consulta INT PRIMARY KEY AUTO_INCREMENT,
+    -- FK para Paciente
+    id_paciente INT NOT NULL,
+    -- FK para Médico
+    id_medico INT NOT NULL,
+    data_hora DATETIME NOT NULL,
+    diagnostico TEXT,
+    
+    -- DEFINIÇÃO DAS CHAVES ESTRANGEIRAS
+    FOREIGN KEY (id_paciente) REFERENCES Paciente(id_paciente),
+    FOREIGN KEY (id_medico) REFERENCES Medico(id_medico)
+);
+
+-- FIM DO SCRIPT
