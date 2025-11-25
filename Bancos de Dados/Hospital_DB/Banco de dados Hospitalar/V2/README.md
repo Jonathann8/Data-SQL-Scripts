@@ -1,4 +1,4 @@
-# 🏥 Projeto Banco de Dados Hospitalar (SUS)
+# 🏥Atualizações do Projeto (Banco de dados hospitalar versão 2)
 
 Este projeto simula a estrutura de um banco de dados para gerenciamento de informações clínicas e operacionais de um hospital da Rede Pública (Sistema Único de Saúde - SUS).
 
