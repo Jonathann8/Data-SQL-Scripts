@@ -1,0 +1,34 @@
+# 🏥 Projeto Banco de Dados Hospitalar (SUS)
+
+Este projeto simula a estrutura de um banco de dados para gerenciamento de informações clínicas e operacionais de um hospital da Rede Pública (Sistema Único de Saúde - SUS).
+
+## 🚀 Melhorias e Atualizações na Modelagem (Data: 25/11/2025)
+
+As principais melhorias nesta versão focaram na expansão da **estrutura organizacional** e na **gestão de procedimentos clínicos** (Exames), além de garantir a coerência dos dados para o ambiente de saúde pública.
+
+### 1. Expansão da Estrutura Organizacional
+
+* **Tabela `Departamento`:** Adicionada para categorizar a organização interna do hospital (ex: Cardiologia, Pediatria, Laboratório).
+* **Vínculo Médico-Departamento:** A tabela `Medico` foi alterada para incluir uma **Chave Estrangeira (`id_departamento`)**, estabelecendo um relacionamento **1:N** (Um Departamento tem Muitos Médicos).
+
+### 2. Gestão de Exames Clínicos
+
+* **Tabela `Exame`:** Criada para listar os tipos de exames disponíveis na unidade (ex: Hemograma, Raio-X).
+* **Ajuste para Hospital Público (SUS):** O campo `preco` foi **removido** da tabela `Exame`, refletindo a natureza gratuita dos serviços para o paciente na rede pública e focando a gestão em procedimentos e não em faturamento.
+* **Tabela `Exame_Solicitado`:** Criada para registrar a solicitação, a execução e o resultado dos exames, vinculando-os à `Consulta` e ao `Exame` específico.
+
+### 3. Coerência e Testes de Dados
+
+* **Validação de Coerência:** Foram inseridos novos dados de pacientes e médicos, e o relacionamento **Médico-Especialidade-Idade** foi revisado e corrigido (ex: garantindo que um paciente idoso não estivesse vinculado a um pediatra), aumentando a qualidade do nosso conjunto de dados de teste.
+* **Validação de FKs:** Os testes de integridade referencial (`INSERT` e `TRUNCATE`) foram concluídos com sucesso, confirmando que todas as **Chaves Estrangeiras (FKs)** estão ativas e funcionando.
+
+---
+
+## Próximos Passos no Desenvolvimento
+
+* Inserir os dados nas novas tabelas (`Departamento` e `Exame`).
+* Atualizar a tabela `Medico` com os novos `id_departamento`.
+* Iniciar a fase de consultas avançadas para extrair relatórios gerenciais (uso de `JOINs` e `GROUP BY`).
+
+---
+
